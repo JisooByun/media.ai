@@ -1,0 +1,17 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+script: "mvn clean package -P prod"
+
+notification:
+  email:
+    recipients:
+      jisoobyun@aifactory.page
