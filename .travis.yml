@@ -23,6 +23,7 @@ deploy:
  - provider: s3
    access_key_id: AKIASTMUXDJ7PXOCRPFZ
    secret_access_key: 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 
+   bucket: mediaai-build
    region: ap-northeast-2
    skip_cleanup: ture
    acl: private
