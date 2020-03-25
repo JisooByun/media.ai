@@ -9,9 +9,10 @@ branches:
 cache:
   directories:
     - '$HOME/.m2/repository'
-script: "mvn clean package -P prod"
+
+script: "mvn clean package"
 
 notification:
   email:
     recipients:
-      jisoobyun@aifactory.page
+      - jisoobyun@aifactory.page
