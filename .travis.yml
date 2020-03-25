@@ -12,6 +12,23 @@ cache:
 
 script: "mvn clean package"
 
+
+
+before_deploy:
+  - zip -r mediaai-webservice *
+  - mkdir -p deploy
+  - mv mediaai-webservice deploy/mediaai-webservice.zip
+
+deploy:
+ - provider: s3
+   access_key_id: AKIASTMUXDJ7PXOCRPFZ
+   secret_access_key: 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 
+   region: ap-northeast-2
+   skip_cleanup: ture
+   acl: private
+   local_dir: deploy
+   wait-util-deployed: true
+
 notification:
   email:
     recipients:
