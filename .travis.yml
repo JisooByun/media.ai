@@ -30,8 +30,8 @@ deploy:
    local_dir: deploy
    wait-util-deployed: true
  - provider: codedeploy
-   access_key_id:
-   secret_access_key:
+   access_key_id: AKIASTMUXDJ7PXOCRPFZ
+   secret_access_key: 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 
    bucket: mediaai-build
    key: mediaai-webservice.zip
    bundle_type: zip
