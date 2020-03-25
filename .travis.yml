@@ -29,6 +29,16 @@ deploy:
    acl: private
    local_dir: deploy
    wait-util-deployed: true
+ - provider: codedeploy
+   access_key_id:
+   secret_access_key:
+   bucket: mediaai-build
+   key: mediaai-webservice.zip
+   bundle_type: zip
+   application: mediaai-webservice
+   deployment_group: mediaai-webservice-group
+   region: ap-northeast-2
+   wait-util-deployed: true
 
 notification:
   email:
