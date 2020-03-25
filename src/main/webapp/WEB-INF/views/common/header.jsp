@@ -22,7 +22,7 @@
 		</a>
      </td>
      <td>
-       KT Media AI
+       KT Media AI1
      </td>
 <!--  
      <td>
