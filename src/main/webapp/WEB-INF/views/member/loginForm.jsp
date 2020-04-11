@@ -12,7 +12,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>로그인창</title>
+	<title>로그인창</title>
+    <link rel="stylesheet" href="${contextPath}/resources/css/login_style.css">
 <c:choose>
 	<c:when test="${result=='loginFailed' }">
 	  <script>
@@ -25,27 +26,24 @@
 </head>
 
 <body>
-<form name="frmLogin" method="post"  action="${contextPath}/member/login.do">
-   <table border="1"  width="80%" align="center" >
-      <tr align="center">
-         <td>아이디</td>
-         <td>비밀번호</td>
-      </tr>
-      <tr align="center">
-         <td>
-	    <input type="text" name="id" value="" size="20">
-	 </td>
-         <td>
-	    <input type="password" name="pwd" value="" size="20">
-	 </td>
-      </tr>
-      <tr align="center">
-         <td colspan="2">
-            <input type="submit" value="로그인" > 
-            <input type="reset"  value="다시입력" > 
-         </td>
-      </tr>
-   </table>
-</form>
+  <div class="wrap">  
+  		<div class ="login-logo" >           	
+  			<img src="${contextPath}/resources/image/ai.png" width="500" height="500" id="loginlogo" >
+  		</div>
+            <div class="form-wrap" style="z-index:1 ">
+            
+                <div class="button-wrap">
+                    <div id="btn"></div>
+                    <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
+                </div>
+          
+                <form id="login" action="logincheck.do" class="input-group" method="post">
+                    <input type="text" name="id" class="input-field" placeholder="User name or Email" required>
+                    <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
+                    <button class="submit">Login</button>
+                </form>
+                
+            </div>
+        </div>
 </body>
 </html>

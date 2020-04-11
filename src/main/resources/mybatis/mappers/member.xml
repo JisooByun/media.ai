@@ -3,13 +3,10 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.member">
-	<resultMap id="memResult" type="memberVO">
+<mapper namespace="member">
+	<resultMap id="memberResult" type="memberVO">
 		<result property="id" column="id" />
         <result property="pwd" column="pwd" />
-        <result property="name" column="name" />
-        <result property="email" column="email" />
-        <result property="joinDate" column="joinDate" />
 	</resultMap> 
 	<!-- 
 	<resultMap id="memResult" type="java.util.HashMap">
@@ -20,8 +17,7 @@
       <result property="joinDate" column="joinDate" />
    </resultMap> -->
 
-
-	<select id="selectAllMemberList" resultMap="memResult">
+<!-- 	<select id="selectAllMemberList" resultMap="memResult">
       <![CDATA[
          select * from t_member	order by joinDate desc	 	
       ]]>
@@ -50,10 +46,11 @@
 	   where
 	   id=#{id}
 	]]>      
-  </delete>
-  <select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
+  </delete>  -->
+  
+  <select id="loginCheck" resultMap="memberResult"> 
 	<![CDATA[
-		select * from t_member	
+		select * from member	
 		where id=#{id} and pwd=#{pwd}		
 	]]>
   </select>

@@ -1,43 +1,46 @@
 package com.myspring.pro27;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Handles requests for the application home page.
- */
+import com.myspring.pro27.member.dao.MemberDAO;
+import com.myspring.pro27.member.service.MemberService;
+import com.myspring.pro27.member.session.MemberSession;
+import com.myspring.pro27.member.vo.MemberVO;
+
 @Controller
 public class HomeController {
-  private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-  /**
-  * Simply selects the home view to render by returning its name.
-  */
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String home(Locale locale, Model model) {
-
-    return "main";
-  }
-}
-
-
-//다국어 기능 코드
-/*
-@Controller
-public class HomeController {
+	@Inject
+	private MemberDAO memberDAO;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		return "main";
+	@Inject
+	MemberService memberService;
+	
+	@GetMapping("/login.do")
+	public String login(HttpSession session , MemberVO vo) {
+		if(session.getAttribute("memberSession") ==null) {
+		return "member/loginForm";
+		}
+		else {
+			return "home";
+		}
 	}
+	
+	@PostMapping("/logincheck.do")
+	public String login(MemberVO vo, HttpSession session) {
+		boolean result = memberService.loginCheck(vo, session);
+		if(result) {
+			return "home";
+		}
+		return "member/loginForm";
+		
+		
+	}
+	
 }
-
-*/

@@ -22,7 +22,8 @@
 		</a>
      </td>
      <td>
-       KT Media AI1
+    
+		${memberSession.id }님
      </td>
 <!--  
      <td>
