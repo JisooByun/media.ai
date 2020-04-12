@@ -9,6 +9,7 @@
     position: absolute;
     background: linear-gradient(#e66465, #9198e5);
     
+    
 }
 .login-logo	{
 	margin-top: 6%;
@@ -22,14 +23,15 @@
     height: 480px;
     position: relative;
     margin-top: 7%;
-    margin-left: 55%;
+    margin-left: 58%;
     margin-right: auto;
     margin-bottom: auto;
     background: #fff;
     padding: 5px;
     overflow: hidden;
     border: 1px solid #999;
-  s
+    border-radius: 20px;
+  
 }
 .button-wrap {
     width: 110px;
