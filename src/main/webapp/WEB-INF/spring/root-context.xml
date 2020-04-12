@@ -20,12 +20,7 @@
             </list>
         </property>
     </bean>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${jdbc.local.driverClassName}" />
-        <property name="url" value="${jdbc.local.url}" />
-        <property name="username" value="${jdbc.local.username}" />
-        <property name="password" value="${jdbc.local.password}" />
-    </bean>
+    
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
     	<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/>  
@@ -36,4 +31,21 @@
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
     	<constructor-arg index="0" ref="sqlSessionFactory" /> 
     </bean>
+    
+    <beans profile="local">
+    	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	        <property name="driverClassName" value="${jdbc.local.driverClassName}" />
+	        <property name="url" value="${jdbc.local.url}" />
+	        <property name="username" value="${jdbc.local.username}" />
+	        <property name="password" value="${jdbc.local.password}" />
+	    </bean>
+    </beans>
+	<beans profile="prod">
+	    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	        <property name="driverClassName" value="${jdbc.prod.driverClassName}" />
+	        <property name="url" value="${jdbc.prod.url}" />
+	        <property name="username" value="${jdbc.prod.username}" />
+	        <property name="password" value="${jdbc.prod.password}" />
+	    </bean>
+    </beans>
 </beans>
